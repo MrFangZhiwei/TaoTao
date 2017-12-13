@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.keyone.mapper.KoParameterMapper" >
+  <resultMap id="BaseResultMap" type="com.keyone.pojo.KoParameter" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="temperature" property="temperature" jdbcType="VARCHAR" />
+    <result column="humidity" property="humidity" jdbcType="VARCHAR" />
+    <result column="carbon" property="carbon" jdbcType="VARCHAR" />
+    <result column="tp_createtime" property="tpCreatetime" jdbcType="VARCHAR" />
+    <result column="hm_createtime" property="hmCreatetime" jdbcType="VARCHAR" />
+    <result column="cb_createtime" property="cbCreatetime" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, temperature, humidity, carbon, tp_createtime, hm_createtime, cb_createtime, createtime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.keyone.pojo.KoParameterExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ko_parameter
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ko_parameter
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ko_parameter
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.keyone.pojo.KoParameterExample" >
+    delete from ko_parameter
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.keyone.pojo.KoParameter" >
+    insert into ko_parameter (id, temperature, humidity, 
+      carbon, tp_createtime, hm_createtime, 
+      cb_createtime, createtime)
+    values (#{id,jdbcType=INTEGER}, #{temperature,jdbcType=VARCHAR}, #{humidity,jdbcType=VARCHAR}, 
+      #{carbon,jdbcType=VARCHAR}, #{tpCreatetime,jdbcType=VARCHAR}, #{hmCreatetime,jdbcType=VARCHAR}, 
+      #{cbCreatetime,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.keyone.pojo.KoParameter" >
+    insert into ko_parameter
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="temperature != null" >
+        temperature,
+      </if>
+      <if test="humidity != null" >
+        humidity,
+      </if>
+      <if test="carbon != null" >
+        carbon,
+      </if>
+      <if test="tpCreatetime != null" >
+        tp_createtime,
+      </if>
+      <if test="hmCreatetime != null" >
+        hm_createtime,
+      </if>
+      <if test="cbCreatetime != null" >
+        cb_createtime,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="temperature != null" >
+        #{temperature,jdbcType=VARCHAR},
+      </if>
+      <if test="humidity != null" >
+        #{humidity,jdbcType=VARCHAR},
+      </if>
+      <if test="carbon != null" >
+        #{carbon,jdbcType=VARCHAR},
+      </if>
+      <if test="tpCreatetime != null" >
+        #{tpCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="hmCreatetime != null" >
+        #{hmCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="cbCreatetime != null" >
+        #{cbCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.keyone.pojo.KoParameterExample" resultType="java.lang.Integer" >
+    select count(*) from ko_parameter
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ko_parameter
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.temperature != null" >
+        temperature = #{record.temperature,jdbcType=VARCHAR},
+      </if>
+      <if test="record.humidity != null" >
+        humidity = #{record.humidity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carbon != null" >
+        carbon = #{record.carbon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tpCreatetime != null" >
+        tp_createtime = #{record.tpCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hmCreatetime != null" >
+        hm_createtime = #{record.hmCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cbCreatetime != null" >
+        cb_createtime = #{record.cbCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null" >
+        createtime = #{record.createtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ko_parameter
+    set id = #{record.id,jdbcType=INTEGER},
+      temperature = #{record.temperature,jdbcType=VARCHAR},
+      humidity = #{record.humidity,jdbcType=VARCHAR},
+      carbon = #{record.carbon,jdbcType=VARCHAR},
+      tp_createtime = #{record.tpCreatetime,jdbcType=VARCHAR},
+      hm_createtime = #{record.hmCreatetime,jdbcType=VARCHAR},
+      cb_createtime = #{record.cbCreatetime,jdbcType=VARCHAR},
+      createtime = #{record.createtime,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.keyone.pojo.KoParameter" >
+    update ko_parameter
+    <set >
+      <if test="temperature != null" >
+        temperature = #{temperature,jdbcType=VARCHAR},
+      </if>
+      <if test="humidity != null" >
+        humidity = #{humidity,jdbcType=VARCHAR},
+      </if>
+      <if test="carbon != null" >
+        carbon = #{carbon,jdbcType=VARCHAR},
+      </if>
+      <if test="tpCreatetime != null" >
+        tp_createtime = #{tpCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="hmCreatetime != null" >
+        hm_createtime = #{hmCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="cbCreatetime != null" >
+        cb_createtime = #{cbCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.keyone.pojo.KoParameter" >
+    update ko_parameter
+    set temperature = #{temperature,jdbcType=VARCHAR},
+      humidity = #{humidity,jdbcType=VARCHAR},
+      carbon = #{carbon,jdbcType=VARCHAR},
+      tp_createtime = #{tpCreatetime,jdbcType=VARCHAR},
+      hm_createtime = #{hmCreatetime,jdbcType=VARCHAR},
+      cb_createtime = #{cbCreatetime,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
