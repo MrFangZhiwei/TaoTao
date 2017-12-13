@@ -73,19 +73,19 @@
         <processorPath useClasspath="true" />
         <module name="taotao-rest" />
       </profile>
-      <profile default="false" name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
-        <module name="taotao-sso" />
-      </profile>
       <profile default="false" name="Annotation profile for taotao-search" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="taotao-search" />
+      </profile>
+      <profile default="false" name="Annotation profile for taotao-sso" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="taotao-sso" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -100,7 +100,7 @@
       <module name="taotao-portal" target="1.7" />
       <module name="taotao-rest" target="1.7" />
       <module name="taotao-search" target="1.7" />
-      <module name="taotao-sso" target="1.5" />
+      <module name="taotao-sso" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
