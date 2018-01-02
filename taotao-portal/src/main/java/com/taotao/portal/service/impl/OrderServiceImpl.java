@@ -1,14 +1,12 @@
 package com.taotao.portal.service.impl;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-
 import com.taotao.common.pojo.TaotaoResult;
-import com.taotao.common.util.CookieUtils;
 import com.taotao.common.util.HttpClientUtil;
 import com.taotao.common.util.JsonUtils;
 import com.taotao.pojo.TbOrder;
 import com.taotao.portal.service.OrderService;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 /**
  * 请求远程提交订单的服务
@@ -29,6 +27,7 @@ public class OrderServiceImpl implements OrderService
 	@Value("${ORDER_CREATE_URL}")
 	private String ORDER_CREATE_URL;
 
+	@Override
 	public String createOrder(TbOrder order)
 	{
 		//调用创建订单服务之前补全用户信息
