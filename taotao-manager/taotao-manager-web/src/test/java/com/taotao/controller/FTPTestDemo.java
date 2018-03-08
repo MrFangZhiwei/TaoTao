@@ -1,15 +1,14 @@
 package com.taotao.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.net.SocketException;
-
+import com.taotao.common.util.FtpUtil;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.junit.Test;
 
-import com.taotao.common.util.FtpUtil;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.SocketException;
 
 
 public class FTPTestDemo {
@@ -19,9 +18,9 @@ public class FTPTestDemo {
 		
 		try {
 			// 连接FTP服务器
-			ftpClient.connect("192.168.219.138", 21);
+			ftpClient.connect("103.202.99.238", 21);
 			// 登录FTP服务器
-			ftpClient.login("ftpuser", "ftpuser");
+			ftpClient.login("test", "KEYONE123cn");
 			// 将文件转换为IO
 			FileInputStream fileInputStream = new FileInputStream(new File("F:\\1.png"));
 			// 指定上传远程目录

@@ -1,12 +1,5 @@
 package com.taotao.portal.service.impl;
 
-import java.util.List;
-import java.util.Map;
-
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-
 import com.taotao.common.pojo.TaotaoResult;
 import com.taotao.common.util.HttpClientUtil;
 import com.taotao.common.util.JsonUtils;
@@ -14,6 +7,12 @@ import com.taotao.pojo.TbItemDesc;
 import com.taotao.pojo.TbItemParamItem;
 import com.taotao.portal.pojo.ItemInfo;
 import com.taotao.portal.service.ItemService;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * 商品信息管Service
@@ -42,6 +41,7 @@ public class ItemServiceImpl implements ItemService
 	 * @param itemId
 	 * @return
 	 */
+	@Override
 	public ItemInfo getItemById(Long itemId)
 	{
 		try
