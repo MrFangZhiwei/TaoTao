@@ -28,10 +28,10 @@
 			<tx:method name="get*" propagation="SUPPORTS" read-only="true" />
 		</tx:attributes>
 	</tx:advice>
-	<!-- 切面 -->
+
 	<aop:config>
-		<aop:advisor advice-ref="txAdvice"
-			pointcut="execution(* com.taotao.service.*.*(..))" />
+        <!-- 切面声明并绑定切点 -->
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* com.taotao.service.*.*(..))" />
 	</aop:config>
 
 </beans>
